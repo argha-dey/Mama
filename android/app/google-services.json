@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "825077782852",
+    "project_id": "mama-959a0",
+    "storage_bucket": "mama-959a0.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:825077782852:android:f95caad361275ad1729f11",
+        "android_client_info": {
+          "package_name": "com.chat.mama"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "825077782852-pdk1g7rkb1p3kcd7t4bgh4q8ap7q3pds.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAV-5sVRy6sBhZTOCdpZo8CROczpkhyzMw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "825077782852-pdk1g7rkb1p3kcd7t4bgh4q8ap7q3pds.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
