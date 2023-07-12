@@ -93,6 +93,8 @@ class _AdminGroupDetailsScreenState extends State<AdminGroupDetailsScreen> {
       var requestHeaders = {
         'Content-Type': 'application/json',
         'Accept': 'application/json',
+        "timezone":
+        '${PrefObj.preferences!.get(PrefKeys.MAMA_APP_TIME_ZONE)}',
         'Authorization':
             'Bearer ' + '${PrefObj.preferences!.get(PrefKeys.AUTH_TOKEN)}',
         'Accept-Language': 'en'
@@ -725,6 +727,84 @@ class _AdminGroupDetailsScreenState extends State<AdminGroupDetailsScreen> {
                     ),
                     SizedBox(
                       height: 10,
+                    ),
+
+                    Container(
+                      alignment: Alignment.topLeft,
+                      margin: EdgeInsets.only(left: 15, top: 25),
+                      child: Text(
+                        "Group Payment period",
+                        style: TextStyle(
+                            fontFamily: 'HelveticaNeueMedium',
+                            color: Colors.black,
+                            fontSize: 19),
+                      ),
+                    ),
+                    Row(
+                      children: [
+                        Container(
+                          alignment: Alignment.topLeft,
+                          margin: EdgeInsets.only(left: 15, top: 5,bottom: 20),
+                          child: Text(
+                            "Between ",
+                            style: TextStyle(
+                              fontWeight: FontWeight.normal,
+                              color: Colors.black,
+                            ),
+                          ),
+                        ),
+                        groupdetailData == null ?Container():
+                        Container(
+                          alignment: Alignment.topLeft,
+                          margin: EdgeInsets.only( top: 5,bottom: 20),
+                          child: Text(
+                            groupdetailData!.data!.paymentStartDate == null  ||       groupdetailData!.data!.paymentStartDate == ""  ? "1" : groupdetailData!.data!.paymentStartDate,
+                            style: TextStyle(
+                              fontWeight: FontWeight.normal,
+                              color: Colors.black,
+                            ),
+                          ),
+                        ),
+                        Container(
+                          alignment: Alignment.topLeft,
+                          margin: EdgeInsets.only( top: 5,bottom: 20),
+                          child: Text(
+                            " - ",
+                            style: TextStyle(
+                              fontWeight: FontWeight.normal,
+                              color: Colors.black,
+                            ),
+                          ),
+                        ),
+                        groupdetailData == null ?Container():
+                        Container(
+                          alignment: Alignment.topLeft,
+                          margin: EdgeInsets.only( top: 5,bottom: 20),
+                          child: Text(
+                            groupdetailData!.data!.paymentStartDate == null ||      groupdetailData!.data!.paymentEndDate == ""  ? "5" : groupdetailData!.data!.paymentEndDate,
+                            style: TextStyle(
+                              fontWeight: FontWeight.normal,
+                              color: Colors.black,
+                            ),
+                          ),
+                        ),
+                        Container(
+                          alignment: Alignment.topLeft,
+                          margin: EdgeInsets.only( top: 5,bottom: 20),
+                          child: Text(
+                            " of the current month",
+                            style: TextStyle(
+                              fontWeight: FontWeight.normal,
+                              color: Colors.black,
+                            ),
+                          ),
+                        ),
+                        /*  " - "
+                                  +
+                                  groupdetailData!.data!.paymentEndDate == null ||   groupdetailData!.data!.paymentStartDate == "" ? "5" : groupdetailData!.data!.paymentEndDate
+                                  +
+                                  " of the current month"*/
+                      ],
                     ),
 
                     /*  InkWell(

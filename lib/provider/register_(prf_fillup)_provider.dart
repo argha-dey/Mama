@@ -21,6 +21,8 @@ class RegisterPrfFillupApi {
 
       var headers = {
         'Content-Type':'application/json',
+        "timezone":
+        '${PrefObj.preferences!.get(PrefKeys.MAMA_APP_TIME_ZONE)}',
          'Accept':'application/json',
         "Accept-Language":"en"
       };

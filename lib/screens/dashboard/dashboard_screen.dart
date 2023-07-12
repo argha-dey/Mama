@@ -1481,11 +1481,9 @@ setState(() {
                                         ),
                                         placeholder: (context, url) =>
                                             Container(
-                                          alignment: Alignment.center,
-                                          child: CircularProgressIndicator(
-                                              valueColor:
-                                                  AlwaysStoppedAnimation<Color>(
-                                                      Colors.grey)),
+                                              width: 90,
+                                              height: 90,
+                                          color: Colors.grey.withOpacity(0.6),
                                         ),
                                         //show progress  while loading image
                                         errorWidget: (context, url, error) =>
@@ -1666,19 +1664,33 @@ setState(() {
                                                           fontWeight: FontWeight
                                                               .normal),
                                                     )
-                                                  : Text(
-                                                      allReadyJoinGroupDataList[
-                                                              index]
-                                                          .last_message
-                                                          .toString(),
-                                                      style: TextStyle(
-                                                          fontSize: 13,
-                                                          color: Colors
-                                                              .grey.shade600,
-                                                          fontWeight: FontWeight
-                                                              .normal),
-                                                      maxLines: 1,
-                                                    ),
+                                                  : allReadyJoinGroupDataList[
+                                                                  index]
+                                                              .last_message
+                                                              .toString()
+                                                              .contains(
+                                                                  '.jpg') ||
+                                                          allReadyJoinGroupDataList[
+                                                                  index]
+                                                              .last_message
+                                                              .toString()
+                                                              .contains('.png')
+                                                      ? imagePreviewWidget()
+                                                      : Text(
+                                                          allReadyJoinGroupDataList[
+                                                                  index]
+                                                              .last_message
+                                                              .toString(),
+                                                          style: TextStyle(
+                                                            fontSize: 13,
+                                                            color: Colors
+                                                                .grey.shade600,
+                                                            fontWeight:
+                                                                FontWeight
+                                                                    .normal,
+                                                          ),
+                                                          maxLines: 1,
+                                                        ),
                                             ],
                                           ),
                                         ),
@@ -1869,19 +1881,32 @@ setState(() {
                                                           fontWeight: FontWeight
                                                               .normal),
                                                     )
-                                                  : Text(
-                                                      allReadyJoinGroupDataList[
-                                                              index]
-                                                          .last_message
-                                                          .toString(),
-                                                      style: TextStyle(
-                                                          fontSize: 13,
-                                                          color: Colors
-                                                              .grey.shade600,
-                                                          fontWeight: FontWeight
-                                                              .normal),
-                                                      maxLines: 1,
-                                                    ),
+                                                  : allReadyJoinGroupDataList[
+                                                                  index]
+                                                              .last_message
+                                                              .toString()
+                                                              .contains(
+                                                                  '.jpg') ||
+                                                          allReadyJoinGroupDataList[
+                                                                  index]
+                                                              .last_message
+                                                              .toString()
+                                                              .contains('.png')
+                                                      ? imagePreviewWidget()
+                                                      : Text(
+                                                          allReadyJoinGroupDataList[
+                                                                  index]
+                                                              .last_message
+                                                              .toString(),
+                                                          style: TextStyle(
+                                                              fontSize: 13,
+                                                              color: Colors.grey
+                                                                  .shade600,
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .normal),
+                                                          maxLines: 1,
+                                                        ),
                                             ],
                                           ),
                                         ),
@@ -2221,19 +2246,32 @@ setState(() {
                                                           fontWeight: FontWeight
                                                               .normal),
                                                     )
-                                                  : Text(
-                                                      groupIndividualMemberDataList[
-                                                              index]
-                                                          .last_message
-                                                          .toString(),
-                                                      style: TextStyle(
-                                                          fontSize: 13,
-                                                          color: Colors
-                                                              .grey.shade600,
-                                                          fontWeight: FontWeight
-                                                              .normal),
-                                                      maxLines: 1,
-                                                    ),
+                                                  : groupIndividualMemberDataList[
+                                                                  index]
+                                                              .last_message
+                                                              .toString()
+                                                              .contains(
+                                                                  '.jpg') ||
+                                                          groupIndividualMemberDataList[
+                                                                  index]
+                                                              .last_message
+                                                              .toString()
+                                                              .contains('.png')
+                                                      ? imagePreviewWidget()
+                                                      : Text(
+                                                          groupIndividualMemberDataList[
+                                                                  index]
+                                                              .last_message
+                                                              .toString(),
+                                                          style: TextStyle(
+                                                              fontSize: 13,
+                                                              color: Colors.grey
+                                                                  .shade600,
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .normal),
+                                                          maxLines: 1,
+                                                        ),
                                             ],
                                           ),
                                         ),
@@ -3125,6 +3163,7 @@ setState(() {
                 );*/ /*
               },
             ),*/
+
             ///remove from group
             /*   Container(
               alignment: Alignment.center,
@@ -3531,6 +3570,26 @@ setState(() {
       MaterialPageRoute(builder: (_) => SignUpScreen()),
     );
   }
+
+  Widget imagePreviewWidget() {
+    return Row(
+      children: [
+        Icon(
+          Icons.photo,
+          color: Colors.grey,
+        ),
+        Text(
+          ' Photo',
+          style: TextStyle(
+            fontSize: 13,
+            color: Colors.grey.shade600,
+            fontWeight: FontWeight.normal,
+          ),
+          maxLines: 1,
+        ),
+      ],
+    );
+  }
 }
 
 class FileConverter {
@@ -3574,6 +3633,7 @@ class IndividualUser {
     last_message = json['last_message'];
     last_message_time = json['last_message_time'];
   }
+
   Map<String, dynamic> toMap() {
     return {
       'id': this.id,

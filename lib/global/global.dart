@@ -17,22 +17,26 @@ class global {
       builder: (BuildContext context) {
         return Center(
             child: Stack(
-          alignment: Alignment.center,
-          children: <Widget>[
-            CircularProgressIndicator(),
-            Container(
-              height: MediaQuery.of(context).size.height,
-              width: MediaQuery.of(context).size.width,
-              color: Colors.transparent,
-            ),
-          ],
-        ));
+              alignment: Alignment.center,
+              children: <Widget>[
+                CircularProgressIndicator(),
+                Container(
+                  height: MediaQuery.of(context).size.height,
+                  width: MediaQuery.of(context).size.width,
+                  color: Colors.transparent,
+                ),
+              ],
+            ));
       },
     );
   }
 
+  /*void turnOffLoader(BuildContext context){
+    Container();
+  }*/
+
   void hideLoader(BuildContext context) {
-    Navigator.pop(context);
+    Navigator.of(context,rootNavigator: true).pop(false);
   }
 
   static void showAlertDialog(
@@ -70,7 +74,7 @@ class global {
   }
 
   ScaffoldFeatureController<SnackBar, SnackBarClosedReason>
-      showSnackBarShowError(BuildContext context, String title) {
+  showSnackBarShowError(BuildContext context, String title) {
     return ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
         behavior: SnackBarBehavior.floating,
@@ -85,7 +89,7 @@ class global {
   }
 
   ScaffoldFeatureController<SnackBar, SnackBarClosedReason>
-      showSnackBarShowSuccess(BuildContext context, String title) {
+  showSnackBarShowSuccess(BuildContext context, String title) {
     return ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
         behavior: SnackBarBehavior.floating,

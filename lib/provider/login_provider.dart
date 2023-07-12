@@ -14,6 +14,8 @@ class LoginApi {
 
       var headers = {
         'Content-Type': 'application/json',
+        "timezone":
+        '${PrefObj.preferences!.get(PrefKeys.MAMA_APP_TIME_ZONE)}',
         'Accept':'application/json',
       };
 
@@ -21,6 +23,8 @@ class LoginApi {
         "device_token":
             '${PrefObj.preferences!.get(PrefKeys.MAMA_APP_DEVICE_TOKEN)}',
         "mobile_code": mobile_code,
+        "timezone":
+        '${PrefObj.preferences!.get(PrefKeys.MAMA_APP_TIME_ZONE)}',
         "mobile": mobile
       };
       debugPrint("body  : $body");

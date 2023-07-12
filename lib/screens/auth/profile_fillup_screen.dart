@@ -587,6 +587,8 @@ class _ProfileFillupScreenState extends State<ProfileFillupScreen> {
       var headers = {
         'Content-Type': 'application/json',
         'Accept': 'application/json',
+        "timezone":
+        '${PrefObj.preferences!.get(PrefKeys.MAMA_APP_TIME_ZONE)}',
         "Accept-Language": "en"
       };
 
@@ -596,6 +598,8 @@ class _ProfileFillupScreenState extends State<ProfileFillupScreen> {
         "name_en": name.text,
         "name_fr": name.text,
         "email": email.text,
+        "timezone":
+        '${PrefObj.preferences!.get(PrefKeys.MAMA_APP_TIME_ZONE)}',
         "mobile_code": widget.countryCode.toString(),
         "mobile": widget.phoneNo.toString(),
         "address": address.text,

@@ -4,6 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
+import '../../../global/PrefKeys.dart';
 import '../../../global/config.dart';
 import '../../../global/global.dart';
 import '../../../model/support_model.dart';
@@ -40,6 +41,8 @@ class _SupportScreenState extends State<SupportScreen> {
       var requestHeaders = {
         'Content-Type': 'application/json',
         'Accept': 'application/json',
+        "timezone":
+        '${PrefObj.preferences!.get(PrefKeys.MAMA_APP_TIME_ZONE)}',
         'Accept-Language': 'en'
       };
 

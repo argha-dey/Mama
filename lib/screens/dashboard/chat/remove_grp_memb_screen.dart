@@ -65,6 +65,8 @@ class _RemoveMemberScreenState extends State<RemoveMemberScreen> {
       var requestHeaders = {
         'Content-Type': 'application/json',
         'Accept': 'application/json',
+        "timezone":
+        '${PrefObj.preferences!.get(PrefKeys.MAMA_APP_TIME_ZONE)}',
         'Authorization':
             'Bearer ' + '${PrefObj.preferences!.get(PrefKeys.AUTH_TOKEN)}',
         'Accept-Language': 'en'

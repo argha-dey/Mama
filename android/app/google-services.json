@@ -14,7 +14,23 @@
       },
       "oauth_client": [
         {
-          "client_id": "825077782852-pdk1g7rkb1p3kcd7t4bgh4q8ap7q3pds.apps.googleusercontent.com",
+          "client_id": "825077782852-3kn16kh145mbi3i3nc9ff2473sbbvr8j.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.chat.mama",
+            "certificate_hash": "e413a27519eed3f12ef406e2f35d698fef06057a"
+          }
+        },
+        {
+          "client_id": "825077782852-igimt52ccblo0sjdd7t8lr100rp0m8i7.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.chat.mama",
+            "certificate_hash": "cda43c9df23ab94a43998c994cd5c3f5e023d3f4"
+          }
+        },
+        {
+          "client_id": "825077782852-3uj2j40e59ka94qi3e58vs34ppl7buk6.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
@@ -27,8 +43,15 @@
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "825077782852-pdk1g7rkb1p3kcd7t4bgh4q8ap7q3pds.apps.googleusercontent.com",
+              "client_id": "825077782852-3uj2j40e59ka94qi3e58vs34ppl7buk6.apps.googleusercontent.com",
               "client_type": 3
+            },
+            {
+              "client_id": "825077782852-vd8qfrhs7rk0fk2og23pme5up4cri9li.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.chat.mama"
+              }
             }
           ]
         }

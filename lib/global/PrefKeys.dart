@@ -8,6 +8,7 @@ class PrefKeys {
   static const String USER_ID = 'mama_user_id';
   static const String USER_TYPE = 'user_type';
   static const String USER_NAME = 'name_en';
+  static const String MAMA_APP_TIME_ZONE = 'app_time_zone';
 }
 
 class PrefObj {

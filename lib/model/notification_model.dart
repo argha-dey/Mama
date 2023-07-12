@@ -1,7 +1,6 @@
 class NotificationModel {
   List<AnotherData>? data;
 
-
   NotificationModel({this.data});
 
   NotificationModel.fromJson(Map<String, dynamic> json) {
@@ -11,7 +10,6 @@ class NotificationModel {
         data!.add(new AnotherData.fromJson(v));
       });
     }
-
   }
 
   Map<String, dynamic> toJson() {
@@ -33,16 +31,19 @@ class AnotherData {
   Null? readAt;
   String? createdAt;
   String? updatedAt;
+  bool? hasRead;
 
-  AnotherData(
-      {this.id,
-        this.type,
-        this.notifiableType,
-        this.notifiableId,
-        this.data,
-        this.readAt,
-        this.createdAt,
-        this.updatedAt});
+  AnotherData({
+    this.id,
+    this.type,
+    this.notifiableType,
+    this.notifiableId,
+    this.data,
+    this.readAt,
+    this.createdAt,
+    this.updatedAt,
+    this.hasRead,
+  });
 
   AnotherData.fromJson(Map<String, dynamic> json) {
     id = json['id'];
@@ -53,6 +54,7 @@ class AnotherData {
     readAt = json['read_at'];
     createdAt = json['created_at'];
     updatedAt = json['updated_at'];
+    hasRead = json['has_read']  ?? false;
   }
 
   Map<String, dynamic> toJson() {

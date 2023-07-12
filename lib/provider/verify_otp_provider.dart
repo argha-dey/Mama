@@ -17,6 +17,8 @@ class VerifyOTPApi {
 
 
       var headers = {
+        "timezone":
+        '${PrefObj.preferences!.get(PrefKeys.MAMA_APP_TIME_ZONE)}',
         'Content-Type':'application/json',
 
 

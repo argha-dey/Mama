@@ -8,7 +8,9 @@ import 'package:hive/hive.dart';
 import 'package:mama/screens/splash/splash_screen.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:scoped_model/scoped_model.dart';
-
+//import 'package:timezone/timezone.dart' as tz;
+//import 'package:timezone/data/latest.dart' as tz;
+import 'package:flutter_native_timezone/flutter_native_timezone.dart';
 import 'global/PrefKeys.dart';
 import 'localizations/app_localizations.dart';
 import 'localizations/language_model.dart';
@@ -22,15 +24,16 @@ import 'package:firebase_core/firebase_core.dart';
 Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
   // If you're going to use other Firebase services in the background, such as Firestore,
   // make sure you call `initializeApp` before using other Firebase services.
-  await Firebase.initializeApp();
+  await Firebase.initializeApp().whenComplete(() =>print("handler_initialized"));
+ // await Firebase.initializeApp();
   print('Handling a background message ${message.messageId}');
 }
 
 Future<void> main() async {
   HttpOverrides.global = MyHttpOverrides();
   WidgetsFlutterBinding.ensureInitialized();
-
-  await Firebase.initializeApp();
+  await Firebase.initializeApp().whenComplete(()=>print("initialized"));
+//  await Firebase.initializeApp();
   FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
 
   await flutterLocalNotificationsPlugin
@@ -121,7 +124,23 @@ class _MyAppState extends State<MyApp> {
       }
     });
 
+
+    //getTimeZone();
     getToken();
+
+  }
+
+  getNativeTimeZone() async {
+    String _timezone = 'Asia/Kolkata';
+    try {
+      _timezone = await FlutterNativeTimezone.getLocalTimezone();
+    } catch (e) {
+      print('Could not get the local timezone');
+    }
+
+    print('@localTimeZone : '+_timezone);
+    PrefObj.preferences!.put(PrefKeys.MAMA_APP_TIME_ZONE, _timezone);
+    // print('@localTimeZone : '+localTimeZone.toString());// => "US/Pacific"
   }
 
   String? token;
@@ -129,6 +148,7 @@ class _MyAppState extends State<MyApp> {
     token = await FirebaseMessaging.instance.getToken();
     PrefObj.preferences!.put(PrefKeys.MAMA_APP_DEVICE_TOKEN, token);
     print('@token : '+token.toString());
+    getNativeTimeZone();
   }
 
   @override
@@ -139,6 +159,7 @@ class _MyAppState extends State<MyApp> {
       builder: (context, child, model) =>
           ScreenUtilInit(builder: (context, child) {
             return MaterialApp(
+              title: 'Koleka',
               locale: model.appLocal,
               supportedLocales: model.supportedLocales,
               localizationsDelegates: const [

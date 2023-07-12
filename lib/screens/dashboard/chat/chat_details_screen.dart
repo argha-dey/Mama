@@ -154,6 +154,8 @@ class _ChatDetailsScreenState extends State<ChatDetailsScreen> {
       var requestHeaders = {
         'Content-Type': 'application/json',
         'Accept': 'application/json',
+        "timezone":
+        '${PrefObj.preferences!.get(PrefKeys.MAMA_APP_TIME_ZONE)}',
         'Authorization':
             'Bearer ' + '${PrefObj.preferences!.get(PrefKeys.AUTH_TOKEN)}',
         'Accept-Language': 'en'
@@ -199,6 +201,8 @@ class _ChatDetailsScreenState extends State<ChatDetailsScreen> {
       var requestHeaders = {
         'Content-Type': 'application/json',
         'Accept': 'application/json',
+        "timezone":
+        '${PrefObj.preferences!.get(PrefKeys.MAMA_APP_TIME_ZONE)}',
         'Authorization':
             'Bearer ' + '${PrefObj.preferences!.get(PrefKeys.AUTH_TOKEN)}',
         'Accept-Language': 'en'
@@ -265,6 +269,8 @@ class _ChatDetailsScreenState extends State<ChatDetailsScreen> {
       var requestHeaders = {
         'Content-Type': 'application/json',
         'Accept': 'application/json',
+        "timezone":
+        '${PrefObj.preferences!.get(PrefKeys.MAMA_APP_TIME_ZONE)}',
         'Authorization':
             'Bearer ' + '${PrefObj.preferences!.get(PrefKeys.AUTH_TOKEN)}',
         'Accept-Language': 'en'
@@ -316,6 +322,8 @@ class _ChatDetailsScreenState extends State<ChatDetailsScreen> {
       var requestHeaders = {
         'Content-Type': 'application/json',
         'Accept': 'application/json',
+        "timezone":
+        '${PrefObj.preferences!.get(PrefKeys.MAMA_APP_TIME_ZONE)}',
         "Accept-Language": "en",
         "Authorization":
             'Bearer ' + '${PrefObj.preferences!.get(PrefKeys.AUTH_TOKEN)}'
@@ -366,6 +374,8 @@ class _ChatDetailsScreenState extends State<ChatDetailsScreen> {
       var requestHeaders = {
         'Content-Type': 'application/json',
         'Accept': 'application/json',
+        "timezone":
+        '${PrefObj.preferences!.get(PrefKeys.MAMA_APP_TIME_ZONE)}',
         "Accept-Language": "en",
         "Authorization":
             'Bearer ' + '${PrefObj.preferences!.get(PrefKeys.AUTH_TOKEN)}'
@@ -984,7 +994,7 @@ class _ChatDetailsScreenState extends State<ChatDetailsScreen> {
                                 alignment: Alignment.topLeft,
                                 margin: EdgeInsets.only( top: 5,bottom: 20),
                                 child: Text(
-                                    groupdetailData!.data!.paymentStartDate == ""  ? "1" : groupdetailData!.data!.paymentStartDate,
+                                  groupdetailData!.data!.paymentStartDate == null  ||       groupdetailData!.data!.paymentStartDate == ""  ? "1" : groupdetailData!.data!.paymentStartDate,
                                   style: TextStyle(
                                     fontWeight: FontWeight.normal,
                                     color: Colors.black,
@@ -1007,7 +1017,7 @@ class _ChatDetailsScreenState extends State<ChatDetailsScreen> {
                                 alignment: Alignment.topLeft,
                                 margin: EdgeInsets.only( top: 5,bottom: 20),
                                 child: Text(
-                                groupdetailData!.data!.paymentEndDate == ""  ? "5" : groupdetailData!.data!.paymentEndDate,
+                                  groupdetailData!.data!.paymentStartDate == null ||      groupdetailData!.data!.paymentEndDate == ""  ? "5" : groupdetailData!.data!.paymentEndDate,
                                   style: TextStyle(
                                     fontWeight: FontWeight.normal,
                                     color: Colors.black,
@@ -1617,17 +1627,17 @@ class _ChatDetailsScreenState extends State<ChatDetailsScreen> {
                                 child: Text(
                                   "Between ",
                                   style: TextStyle(
-                                      fontWeight: FontWeight.normal,
-                                      color: Colors.black,
-                                      ),
+                                    fontWeight: FontWeight.normal,
+                                    color: Colors.black,
+                                  ),
                                 ),
                               ),
-
-                           /*   Container(
+                              groupdetailData == null ?Container():
+                              Container(
                                 alignment: Alignment.topLeft,
                                 margin: EdgeInsets.only( top: 5,bottom: 20),
                                 child: Text(
-                                  groupdetailData == null ? "" :   groupdetailData!.data!.paymentStartDate == ""  ? "1" : groupdetailData!.data!.paymentStartDate,
+                                  groupdetailData!.data!.paymentStartDate == null  ||       groupdetailData!.data!.paymentStartDate == ""  ? "1" : groupdetailData!.data!.paymentStartDate,
                                   style: TextStyle(
                                     fontWeight: FontWeight.normal,
                                     color: Colors.black,
@@ -1645,17 +1655,18 @@ class _ChatDetailsScreenState extends State<ChatDetailsScreen> {
                                   ),
                                 ),
                               ),
+                              groupdetailData == null ?Container():
                               Container(
                                 alignment: Alignment.topLeft,
                                 margin: EdgeInsets.only( top: 5,bottom: 20),
                                 child: Text(
-                                  groupdetailData == null ? "" :   groupdetailData!.data!.paymentEndDate == ""  ? "5" : groupdetailData!.data!.paymentEndDate,
+                                  groupdetailData!.data!.paymentStartDate == null ||      groupdetailData!.data!.paymentEndDate == ""  ? "5" : groupdetailData!.data!.paymentEndDate,
                                   style: TextStyle(
                                     fontWeight: FontWeight.normal,
                                     color: Colors.black,
                                   ),
                                 ),
-                              ),*/
+                              ),
                               Container(
                                 alignment: Alignment.topLeft,
                                 margin: EdgeInsets.only( top: 5,bottom: 20),
@@ -1667,7 +1678,7 @@ class _ChatDetailsScreenState extends State<ChatDetailsScreen> {
                                   ),
                                 ),
                               ),
-                                /*  " - "
+                              /*  " - "
                                   +
                                   groupdetailData!.data!.paymentEndDate == null ||   groupdetailData!.data!.paymentStartDate == "" ? "5" : groupdetailData!.data!.paymentEndDate
                                   +

@@ -49,6 +49,8 @@ class _NotificationScreenState extends State<NotificationScreen> {
       var requestHeaders = {
         'Content-Type': 'application/json',
         'Accept': 'application/json',
+        "timezone":
+        '${PrefObj.preferences!.get(PrefKeys.MAMA_APP_TIME_ZONE)}',
         'Authorization':
             'Bearer ' + '${PrefObj.preferences!.get(PrefKeys.AUTH_TOKEN)}',
         'Accept-Language': 'en'
@@ -95,6 +97,7 @@ class _NotificationScreenState extends State<NotificationScreen> {
         leading: IconButton(
             icon: new Icon(Icons.keyboard_backspace_outlined),
             onPressed: () {
+              //todo:
               Navigator.of(context).pop();
             }),
       ),
@@ -129,61 +132,70 @@ class _NotificationScreenState extends State<NotificationScreen> {
                             onTap: () {},
                             child: Card(
                               margin: EdgeInsets.all(5),
-                              child: Column(
-                                children: [
-                                  Row(
-                                    mainAxisAlignment: MainAxisAlignment.start,
-                                    children: [
-                                      Container(
-                                        margin: EdgeInsets.only(left: 10),
-                                        child: Icon(
-                                          Icons.notifications,
-                                          color: Colors.blue,
+                              child: Padding(
+                                padding: const EdgeInsets.symmetric(
+                                  horizontal: 18,
+                                ),
+                                child: Column(
+                                  children: [
+                                    Row(
+                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            Container(
+                                                margin: EdgeInsets.only(
+                                                    right: 5, top: 2),
+                                                child: Text(
+                                                  notificationList[index]
+                                                      .data!
+                                                      .title
+                                                      .toString(),
+                                                  maxLines: 1,
+                                                  overflow: TextOverflow.ellipsis,
+                                                  style: TextStyle(
+                                                      fontWeight: FontWeight.bold,
+                                                      color: Colors.black,
+                                                      fontSize: 14),
+                                                )),
+                                            Container(
+                                                width: 260,
+                                                margin: EdgeInsets.only(
+                                                    left: 0, right: 5, top: 2),
+                                                padding: EdgeInsets.only(top: 2),
+                                                child: Text(
+                                                  notificationList[index]
+                                                      .data!
+                                                      .body
+                                                      .toString(),
+                                                  maxLines: 3,
+                                                  overflow: TextOverflow.ellipsis,
+                                                  style: TextStyle(
+                                                      color: Colors.black,
+                                                      fontSize: 12),
+                                                )),
+                                          ],
                                         ),
-                                      ),
-                                      Column(
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                        children: [
-                                          Container(
-                                              margin: EdgeInsets.only(
-                                                  right: 5, top: 2),
-                                              child: Text(
-                                                notificationList[index]
-                                                    .data!
-                                                    .title
-                                                    .toString(),
-                                                maxLines: 1,
-                                                overflow: TextOverflow.ellipsis,
-                                                style: TextStyle(
-                                                    fontWeight: FontWeight.bold,
-                                                    color: Colors.black,
-                                                    fontSize: 14),
-                                              )),
-                                          Container(
-                                              width: 260,
-                                              margin: EdgeInsets.only(
-                                                  left: 0, right: 5, top: 2),
-                                              padding: EdgeInsets.only(top: 2),
-                                              child: Text(
-                                                notificationList[index]
-                                                    .data!
-                                                    .body
-                                                    .toString(),
-                                                maxLines: 3,
-                                                overflow: TextOverflow.ellipsis,
-                                                style: TextStyle(
-                                                    color: Colors.black,
-                                                    fontSize: 12),
-                                              )),
-                                        ],
-                                      )
-                                    ],
-                                  ),
-                                  SizedBox(
-                                    height: 20,
-                                  )
-                                ],
+                                        Offstage(
+                                          offstage: notificationList[index].hasRead ?? false,
+                                          child: Container(
+                                            margin: EdgeInsets.only(left: 10),
+                                            child: Icon(
+                                              Icons.circle,
+                                              size: 10,
+                                              color: Color.fromRGBO(5, 119, 128, 1),
+                                            ),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                    SizedBox(
+                                      height: 20,
+                                    )
+                                  ],
+                                ),
                               ),
                             ));
                       }))

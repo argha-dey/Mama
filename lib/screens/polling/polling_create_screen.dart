@@ -284,7 +284,7 @@ class _PollingCreateScreenState extends State<PollingCreateScreen> {
                             height: 22, width: 22, fit: BoxFit.cover)),
                   ),
                   labelText: Translation.of(context)!.translate('start_date')!,
-                  hintText: "6 /03 /2022 | 11:20 AM ",
+                  hintText: "6 /03 /2022 | 11:20 ",
                   labelStyle: TextStyle(
                       fontFamily: 'HelveticaLight',
                       fontSize: 16,
@@ -326,7 +326,7 @@ class _PollingCreateScreenState extends State<PollingCreateScreen> {
                             height: 22, width: 22, fit: BoxFit.cover)),
                   ),
                   labelText: Translation.of(context)!.translate('end_date')!,
-                  hintText: "6 /03 /2022 | 11:20 AM ",
+                  hintText: "6 /03 /2022 | 16:20 ",
                   labelStyle: TextStyle(
                       fontFamily: 'HelveticaLight',
                       fontSize: 16,

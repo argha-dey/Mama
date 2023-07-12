@@ -14,6 +14,8 @@ class SendOtpApi {
 
       var headers = {
         'Content-Type': 'application/json',
+        "timezone":
+        '${PrefObj.preferences!.get(PrefKeys.MAMA_APP_TIME_ZONE)}',
       };
 
       final body = {

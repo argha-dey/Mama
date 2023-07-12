@@ -16,6 +16,8 @@ class AcceptDeclineApi {
         'Content-Type':'application/json',
         'Accept':'application/json',
         "Accept-Language":"en",
+        "timezone":
+        '${PrefObj.preferences!.get(PrefKeys.MAMA_APP_TIME_ZONE)}',
         "Authorization":'Bearer '+'${PrefObj.preferences!.get(PrefKeys.AUTH_TOKEN)}'
       };
 
